@@ -1,0 +1,75 @@
+{
+    "receiver": "webhook",
+    "status": "firing",
+    "alerts": [
+        {
+            "status": "firing",
+            "labels": {
+                "alertname": "consul-service-check",
+                "check": "check-node_exporter",
+                "group": "west",
+                "instance": "10.12.1.100:31930",
+                "job": "consul-exporter",
+                "node": "test1",
+                "service_id": "node-exporter",
+                "service_name": "node-exporter",
+                "severity": "warning",
+                "status": "critical"
+            },
+            "annotations": {
+                "description": "a service health check has failed",
+                "fail_msg": "service check `check-node_exporter` is failing",
+                "identifier": "test1.west",
+                "restore_msg": "service check `check-node_exporter` is passing"
+            },
+            "startsAt": "2020-03-12T16:47:11.761933705-07:00",
+            "endsAt": "0001-01-01T00:00:00Z",
+            "generatorURL": "http://prometheus1:9090/graph?g0.expr=consul_health_service_status%7Bstatus%3D%22critical%22%7D+%3E+0+or+consul_health_service_status%7Bstatus%3D%22warning%22%7D+%3E+0&g0.tab=1",
+            "fingerprint": "512916eb3b8064fd"
+        },
+        {
+            "status": "resolved",
+            "labels": {
+                "alertname": "consul-service-check",
+                "check": "vault:10.12.1.132:8200:vault-sealed-check",
+                "group": "west",
+                "instance": "10.12.1.100:31930",
+                "job": "consul-exporter",
+                "node": "hashi1",
+                "service_id": "vault:10.12.1.132:8200",
+                "service_name": "vault",
+                "severity": "warning",
+                "status": "critical"
+            },
+            "annotations": {
+                "description": "a service health check has failed",
+                "fail_msg": "service check `vault:10.12.1.132:8200:vault-sealed-check` is failing",
+                "identifier": "hashi1.west",
+                "restore_msg": "service check `vault:10.12.1.132:8200:vault-sealed-check` is passing"
+            },
+            "startsAt": "2020-03-12T16:36:41.761933705-07:00",
+            "endsAt": "2020-03-12T16:36:56.761933705-07:00",
+            "generatorURL": "http://prometheus1:9090/graph?g0.expr=consul_health_service_status%7Bstatus%3D%22critical%22%7D+%3E+0+or+consul_health_service_status%7Bstatus%3D%22warning%22%7D+%3E+0&g0.tab=1",
+            "fingerprint": "53989affb24cef7f"
+        }
+    ],
+    "groupLabels": {
+        "alertname": "consul-service-check",
+        "group": "west",
+        "instance": "10.12.1.100:31930"
+    },
+    "commonLabels": {
+        "alertname": "consul-service-check",
+        "group": "west",
+        "instance": "10.12.1.100:31930",
+        "job": "consul-exporter",
+        "severity": "warning",
+        "status": "critical"
+    },
+    "commonAnnotations": {
+        "description": "a service health check has failed"
+    },
+    "externalURL": "https://prometheus.example.com",
+    "version": "4",
+    "groupKey": "{}/{}:{alertname=\"consul-service-check\", group=\"west\", instance=\"10.12.1.100:31930\"}"
+}
