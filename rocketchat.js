@@ -4,9 +4,6 @@
 // https://rocket.chat/docs/administrator-guides/integrations/
 // https://rocket.chat/docs/developer-guides/rest-api/chat/postmessage/
 
-const DEFAULT_CHANNEL = '#alerts-prometheus'
-const THIS_WEBHOOK = 'CHANGE ME TO YOUR WEBHOOK URL'
-
 class Script {
 
     // entry point for rocket.chat
@@ -86,9 +83,10 @@ class Script {
     _repost_request(request) {
         // console.log(request.url_raw) // url_raw is just the path, no scheme or hostname
         // console.log(request)
-        
+        // for modern server 
+        webhook = request.headers['x-forwarded-proto']+"://"+request.headers.host+""+request.url.path
         // post single alert back to this integration
-        HTTP("POST", THIS_WEBHOOK, {data: request.content})
+        HTTP("POST", webhook, {data: request.content})
     }
 
     _get_alert_msg(alert) {
@@ -106,7 +104,7 @@ class Script {
             if( request.commonLabels.hasOwnProperty('channel') )
                 return request.commonLabels.channel;
 
-        return DEFAULT_CHANNEL;
+        return undefined;
     }
 
     _color(status) {
